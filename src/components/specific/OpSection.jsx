@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const OpSection = () => {
     const result = useSelector((state) => state.main.cImage);
-    
     const input = useSelector((state)  => state.main.inpImage)
     console.log("input",input)
   return (
@@ -29,7 +28,11 @@ const OpSection = () => {
             }} className={`p-[1rem] border-[1px] border-gray-400 h-full rounded-[3rem] w-[48%]`}>
                 <div className='bg-black rounded-full text-center h-[2rem] w-[5rem]  text-white'><h1>Before</h1></div>
             </div>
-            <div className={`bg-[url(${result})] bg-cover bg-center p-[1rem] border-[1px] border-gray-400 h-full rounded-[3rem] w-[48%]`}>
+            <div  style={{
+              backgroundImage: ` url("${result}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}  className={`bg-cover bg-center p-[1rem] border-[1px] border-gray-400 h-full rounded-[3rem] w-[48%]`}>
                 <div className={` bg-black bg-cover bg-center rounded-full text-center h-[2rem] w-[5rem]  text-white`}><h1>After</h1></div>
             </div>
         </div>   

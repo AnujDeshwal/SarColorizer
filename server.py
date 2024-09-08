@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 upload_folder = 'uploads'
 os.makedirs(upload_folder, exist_ok=True)
@@ -64,7 +64,7 @@ def ai():
         if category == '0':
             predict_from_path(models["barrenland"], file_path)
         elif category == '1':
-            predict_from_path(models["agri"], file_path)
+            predict_from_path(models["agriland"], file_path)
         elif category == '2':
             predict_from_path(models["grassland"], file_path)
         elif category == '3':

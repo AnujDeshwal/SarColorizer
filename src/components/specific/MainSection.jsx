@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { categoryTypes } from "../../utils/data";
@@ -60,26 +60,7 @@ const MainSection = () => {
           }
         )
         })
-      axios.post(`${server}/main` , formData , config)
-      .then(({data}) => {
-        dispatch(storeImage(data.user))
-        toast.success(
-          "SAR image enhanced successfully",
-          {
-            id:toastId
-          }
-        )
-      })
-      .catch((err) =>{
-        toast.error(
-         err?.response?.data?.message  || "Something went wrong ",
-          {
-            id:toastId
-          }
-        )
-        })
-
-  };
+       };
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setGeo(file);
@@ -87,6 +68,7 @@ const MainSection = () => {
     //here onLoad is like when image will fully readed by the fileReader then only .onload will work
     reader.onload = function (event) {
       const ImageUrl = event.target?.result;
+      console.log("Input"+ImageUrl)
       setUrl(ImageUrl);
     };
     // When you call readAsDataURL(blob), the FileReader starts reading the contents of the specified file asynchronously. Once the reading operation is complete, the load event is triggered, and you can access the data URL representing the file's contents from the result property of the FileReader object.
