@@ -34,7 +34,7 @@ const MainSection = () => {
           // "Content-Type": "application/json",
         },
       };
-      axios.post(`${server}/getImg` , formData , config)
+      axios.post(`${server}/main` , formData , config)
       .then(({data}) => {
         dispatch(storeImage(data.user))
         toast.success(
