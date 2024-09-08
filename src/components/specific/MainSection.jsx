@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { categoryTypes } from "../../utils/data";
+import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 import BoxComp from "./BoxComp";
 import { server } from "../../utils/server";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { storeImage } from "../../redux/main.reducer";
+import { storeImage, storeInp } from "../../redux/main.reducer";
 const defaultUrl =
   "https://png.pngtree.com/png-vector/20190120/ourmid/pngtree-gallery-vector-icon-png-image_470660.jpg";
 
@@ -18,11 +19,16 @@ const MainSection = () => {
   const [url, setUrl] = useState(defaultUrl);
   const [geo , setGeo] = useState("");
   const fileInputRef = useRef();
+  const navigate = useNavigate();
   const handleSubmit = () => {
-    if(geo === ""){
+    if(url == defaultUrl ){
         toast.error("Please choose a image");
+        return ;
     }
-    else if(category == -1)toast.error("Please choose a category");
+    else if(category == -1){
+      toast.error("Please choose a category");return ;}
+      console.log("this is url:"  , url)
+    dispatch(storeInp(url));
     const toastId = toast.loading("Colorizing...");
     const formData = new FormData();
     formData.append("geo", geo);
@@ -34,24 +40,32 @@ const MainSection = () => {
           // "Content-Type": "application/json",
         },
       };
-      axios.post(`${server}/getImg` , formData , config)
-      .then(({data}) => {
-        dispatch(storeImage(data.user))
-        toast.success(
-          "SAR image enhanced successfully",
-          {
-            id:toastId
-          }
-        )
-      })
-      .catch((err) =>{
-        toast.error(
-         err?.response?.data?.message  || "Something went wrong ",
-          {
-            id:toastId
-          }
-        )
-        })
+      toast.success(
+        "SAR image enhanced successfully",
+        {
+          id:toastId
+        }
+      )
+      navigate('/output');
+      // axios.post(`${server}/main` , formData , config)
+      // .then(({data}) => {
+      //   dispatch(storeImage(data.geo))
+      //   toast.success(
+      //     "SAR image enhanced successfully",
+      //     {
+      //       id:toastId
+      //     }
+      //   )
+      //   navigate('/output');
+      // })
+      // .catch((err) =>{
+      //   toast.error(
+      //    err?.response?.data?.message  || "Something went wrong ",
+      //     {
+      //       id:toastId
+      //     }
+      //   )
+      //   })
 
   };
   const handleFileInputChange = (e) => {

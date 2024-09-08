@@ -1,1 +1,1 @@
-export const categoryTypes =["Terrain" , "barrenland" , "grassland" , "agriLand"];
+export const categoryTypes =["Barenland" , "Agriculture" , "Grassland" , "Urban"];
