@@ -1,0 +1,1 @@
+export const categoryTypes =["Terrain" , "barrenland" , "grassland" , "agriLand"];
