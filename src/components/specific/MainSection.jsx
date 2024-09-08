@@ -40,32 +40,44 @@ const MainSection = () => {
           // "Content-Type": "application/json",
         },
       };
-      toast.success(
-        "SAR image enhanced successfully",
-        {
-          id:toastId
-        }
-      )
-      navigate('/output');
-      // axios.post(`${server}/main` , formData , config)
-      // .then(({data}) => {
-      //   dispatch(storeImage(data.geo))
-      //   toast.success(
-      //     "SAR image enhanced successfully",
-      //     {
-      //       id:toastId
-      //     }
-      //   )
-      //   navigate('/output');
-      // })
-      // .catch((err) =>{
-      //   toast.error(
-      //    err?.response?.data?.message  || "Something went wrong ",
-      //     {
-      //       id:toastId
-      //     }
-      //   )
-      //   })
+
+      axios.post(`${server}/main` , formData , config)
+      .then(({data}) => {
+        dispatch(storeImage(data.geo))
+        toast.success(
+          "SAR image enhanced successfully",
+          {
+            id:toastId
+          }
+        )
+        navigate('/output');
+      })
+      .catch((err) =>{
+        toast.error(
+         err?.response?.data?.message  || "Something went wrong ",
+          {
+            id:toastId
+          }
+        )
+        })
+      axios.post(`${server}/main` , formData , config)
+      .then(({data}) => {
+        dispatch(storeImage(data.user))
+        toast.success(
+          "SAR image enhanced successfully",
+          {
+            id:toastId
+          }
+        )
+      })
+      .catch((err) =>{
+        toast.error(
+         err?.response?.data?.message  || "Something went wrong ",
+          {
+            id:toastId
+          }
+        )
+        })
 
   };
   const handleFileInputChange = (e) => {
