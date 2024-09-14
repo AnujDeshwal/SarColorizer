@@ -11,8 +11,7 @@ Introducing GeoTint, an AI powered SAR image colorizer to fill colours back into
 - [@Toran Jain](https://www.github.com/Eyepatch-13)
 - [@Anuj Deshwal](https://www.github.com/AnujDeshwal)
 - [@Priyanshu Bhatt](https://www.github.com/FalconX80)
-- [@Bhanu](https://github.com/Bhanugoel312)
-
+- [@Bhanu](https://github.com/Bhanu-goel)
 
 ## Features
 
