@@ -39,10 +39,6 @@ def predict_from_path(model, image_path):
     plt.axis("off")
     plt.savefig(img_path)
 
-@app.route("/", methods=['GET'])
-def home():
-    return jsonify({"message": "Hello from Flask"})
-
 @app.route("/main", methods=["POST"])
 def ai():
     if 'geo' not in request.files:
