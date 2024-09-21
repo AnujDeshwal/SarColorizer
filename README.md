@@ -23,7 +23,7 @@ Introducing GeoTint, an AI powered SAR image colorizer to fill colours back into
 - Compare results with original
 - Download Results
 - Cross platform
-- [Drive link for models](https://drive.google.com/drive/folders/176kf537TnpZctqxLdh2ExuBmNIsuWRvE?usp=drive_link)
+
 ## Screenshots
 
 ![HomePage](/screenshots/HomePage.png?raw=true "Home Page")
